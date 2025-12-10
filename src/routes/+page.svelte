@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600 flex flex-col items-center text-white relative overflow-hidden">
+<div class="min-h-screen bg-gradient-to-br from-cyan-600 via-cyan-500 to-green-600 flex flex-col items-center text-white relative overflow-hidden">
     
     <!-- Background Elements -->
     <div class="absolute top-20 left-20 w-72 h-72 bg-white/20 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
@@ -8,9 +8,9 @@
     <main class="relative z-10 w-full max-w-6xl px-6 py-12 flex flex-col items-center">
         
         <!-- Hero Section -->
-        <div class="text-center max-w-4xl mb-16">
+        <div class="text-center max-w-4xl mb-16 ">
             <h1 class="text-6xl md:text-8xl font-black tracking-tight drop-shadow-lg mb-4">
-                Async<span class="text-cyan-200">Control</span>
+                Async<span class="text-orange-300 rounded-md mg-md">Control</span>
             </h1>
             
             <p class="text-xl md:text-2xl font-light mb-8 text-blue-100 drop-shadow-md">
@@ -29,10 +29,10 @@
 
             <!-- CTA Buttons -->
             <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-                <a href="/instalar" 
-                class="group relative px-8 py-4 bg-gradient-to-b from-white/40 to-white/10 border border-white/50 rounded-full backdrop-blur-md shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:scale-105 transition-all duration-300 overflow-hidden">
-                    <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/40 to-transparent opacity-70"></div>
-                    <span class="relative font-bold text-lg tracking-wide group-hover:text-cyan-100">DESCARGAR AHORA</span>
+                <a href="/download" 
+                class="group relative px-8 py-4 bg-gradient-to-b from-orange-400 to-white/400 border border-white/50 rounded-full backdrop-blur-md shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:scale-105 transition-all duration-300 overflow-hidden">
+                    <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-orange-400 to-white/400 opacity-70"></div>
+                    <span class="relative font-bold text-lg tracking-wide group-hover:text-orange-100">DESCARGAR AHORA</span>
                 </a>
 
                 <a href="/docs" 
