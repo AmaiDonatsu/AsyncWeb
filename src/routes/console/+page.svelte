@@ -63,43 +63,94 @@
    
 </script>
 
-<div>
-    <h1>consola</h1>
+<div class="min-h-screen bg-slate-50 p-6 md:p-10">
+    <header class="mb-10 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-slate-800 tracking-tight">Consola de Servicios</h1>
+                <p class="text-slate-500 mt-1">Administra tus llaves de acceso y dispositivos conectados</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-lg shadow-blue-200">
+                    {$user?.email?.[0].toUpperCase() || 'U'}
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <div>
-        <h1>mis keys</h1>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Lista de Keys -->
+        <div class="{selectedKey ? 'lg:col-span-8' : 'lg:col-span-12'} transition-all duration-500 ease-in-out">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-semibold text-slate-700 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                    </svg>
+                    Mis Llaves
+                </h2>
+                {#if userKeys?.keys}
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 rounded-full text-xs font-medium shadow-sm">
+                        {userKeys.keys.length} Dispositivos
+                    </span>
+                {/if}
+            </div>
 
-        <div>
             {#if userKeys && userKeys.keys && userKeys.keys.length > 0}
-                <pre>si hay user keys</pre>
-            {#each userKeys.keys as key}
-        
-                <button on:click={() => selectKey(key.id)} class={key.id === selectedKey ? 'bg-green-800' : 'bg-green-200'}>
-                    <KeysCard keyData={key} />
-                </button>
-
-            {/each}
+                <div class="grid grid-cols-1 md:grid-cols-2 {selectedKey ? 'xl:grid-cols-2' : 'xl:grid-cols-3'} gap-5">
+                    {#each userKeys.keys as key}
+                        <button 
+                            on:click={() => selectKey(key.id)} 
+                            class="text-left w-full group focus:outline-none"
+                        >
+                            <KeysCard keyData={key} selected={key.id === selectedKey} />
+                        </button>
+                    {/each}
+                </div>
             {:else}
-                <pre>no hay user keys</pre>
+                <div class="bg-white rounded-2xl p-16 text-center border border-slate-200 border-dashed shadow-sm">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-50 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-slate-900">No hay llaves encontradas</h3>
+                    <p class="text-slate-500 mt-1 max-w-sm mx-auto">Parece que aún no tienes dispositivos asociados a tu cuenta.</p>
+                </div>
             {/if}
         </div>
 
-        <div>
-            {#if selectedKey && userKeys && userKeys.keys && userKeys.keys.length > 0}
-                <h2>Editar Key</h2>
-                {#each userKeys.keys as key (key.id)}
-                    {#if key.id === selectedKey}
-                        <KeyPanel keyData={key} on:update={async (e) => {
-                            console.log("Updated key data:", e.detail);
-                            const token = await auth.currentUser?.getIdToken(true) || '';
-                            updateKey(key.id, e.detail.name, e.detail.reserved, token).then(() => {
-                                getConsoleData();
-                            });
-                        }} />
-                    {/if}
-                {/each}
-            {/if}
+        <!-- Panel de Edición -->
+        {#if selectedKey && userKeys && userKeys.keys}
+            <div class="lg:col-span-4 animate-in slide-in-from-right-10 fade-in duration-300">
+                <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden sticky top-8">
+                    <div class="p-5 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center backdrop-blur-sm">
+                        <h2 class="font-semibold text-slate-800 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                            Editar Llave
+                        </h2>
+                        <button on:click={() => selectedKey = null} class="p-1 rounded-lg hover:bg-slate-200 text-slate-400 hover:text-slate-600 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        {#each userKeys.keys as key (key.id)}
+                            {#if key.id === selectedKey}
+                                <KeyPanel keyData={key} on:update={async (e) => {
+                                    console.log("Updated key data:", e.detail);
+                                    const token = await auth.currentUser?.getIdToken(true) || '';
+                                    updateKey(key.id, e.detail.name, e.detail.reserved, token).then(() => {
+                                        getConsoleData();
+                                    });
+                                }} />
+                            {/if}
+                        {/each}
+                    </div>
+                </div>
+            </div>
+        {/if}
     </div>
-    </div>
-    
 </div>
