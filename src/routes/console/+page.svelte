@@ -6,7 +6,7 @@
         PUBLIC_FIREBASE_BACKEND_URL
     } from '$env/static/public';
     import { auth } from '$lib/firebase';
-    import KeysCard from '../../components/keysCard.svelte';
+    import KeysCard from '../../components/KeysCard.svelte';
     import KeyPanel from '../../components/KeyPanel.svelte';
     import { updateKey, createKey } from '$lib/apiBackend';
     import CreateKey from '../../components/CreateKey.svelte';
@@ -90,7 +90,7 @@
                     </svg>
                     Mis Llaves 
                     {#if !creatingKey}
-                    <button on:click={() => creatingKey = true} class="ml-3 px-3 py-1 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                    <button onclick={() => creatingKey = true} class="ml-3 px-3 py-1 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
                         Crear Llave
                     </button>
                     {/if}
@@ -106,7 +106,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 {selectedKey ? 'xl:grid-cols-2' : 'xl:grid-cols-3'} gap-5">
                     {#each userKeys.keys as key}
                         <button 
-                            on:click={() => selectKey(key.id)} 
+                            onclick={() => selectKey(key.id)} 
                             class="text-left w-full group focus:outline-none"
                         >
                             <KeysCard keyData={key} selected={key.id === selectedKey} />
@@ -137,7 +137,7 @@
                             </svg>
                             Editar Llave
                         </h2>
-                        <button on:click={() => selectedKey = null} class="p-1 rounded-lg hover:bg-slate-200 text-slate-400 hover:text-slate-600 transition-colors">
+                        <button onclick={() => selectedKey = null} aria-label="Cerrar" class="p-1 rounded-lg hover:bg-slate-200 text-slate-400 hover:text-slate-600 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>
@@ -167,7 +167,10 @@
             <!-- Backdrop -->
             <div 
                 class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
-                on:click={() => creatingKey = false}
+                onclick={() => creatingKey = false}
+                role="button"
+                tabindex="0"
+                onkeydown={(e) => { if(e.key === 'Enter' || e.key === ' ') creatingKey = false; }}
             ></div>
             
             <!-- Modal Content -->
