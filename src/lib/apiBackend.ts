@@ -23,4 +23,21 @@ async function updateKey(keyId: string, name: string, reserved: boolean, token: 
 //            "reserved": update_data.reserved
 //        }
 
-export { updateKey };
+async function createKey(name: string, token: string) {
+    const backendUrl = PUBLIC_FIREBASE_BACKEND_URL || 'http://localhost:8000';    
+    
+    const response = await fetch(`${backendUrl}/keys/create`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ name })
+    });
+
+    return response;
+};
+
+// example response: { "success": True, "message": "Key creada exitosamente", "key_id": key_id, "data": {"device": "", "name": key_data.name,"reserved": False,"secretKey": secret_key,"user": user_id }}
+
+export { updateKey, createKey };

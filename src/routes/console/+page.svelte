@@ -8,7 +8,8 @@
     import { auth } from '$lib/firebase';
     import KeysCard from '../../components/keysCard.svelte';
     import KeyPanel from '../../components/KeyPanel.svelte';
-    import { updateKey } from '$lib/apiBackend';
+    import { updateKey, createKey } from '$lib/apiBackend';
+    import CreateKey from '../../components/CreateKey.svelte';
 
     $effect(() => {
         if (browser && $user === null) {
@@ -20,7 +21,7 @@
 
     interface KeyData {
         id: string;
-        [key: string]: any; // Allows other properties
+        [key: string]: any;
     }
     interface UserKeysResponse {
         keys: KeyData[];
@@ -28,6 +29,7 @@
 
     let selectedKey = $state<string | null>(null);
     let userKeys = $state<UserKeysResponse>();
+    let creatingKey = $state<boolean>(false);
     
     async function getConsoleData() {
         console.log("fetching user keys...");
@@ -86,7 +88,12 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                     </svg>
-                    Mis Llaves
+                    Mis Llaves 
+                    {#if !creatingKey}
+                    <button on:click={() => creatingKey = true} class="ml-3 px-3 py-1 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                        Crear Llave
+                    </button>
+                    {/if}
                 </h2>
                 {#if userKeys?.keys}
                     <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 rounded-full text-xs font-medium shadow-sm">
@@ -153,4 +160,29 @@
             </div>
         {/if}
     </div>
+
+    <!-- Modal Crear Key -->
+    {#if creatingKey}
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
+            <!-- Backdrop -->
+            <div 
+                class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
+                on:click={() => creatingKey = false}
+            ></div>
+            
+            <!-- Modal Content -->
+            <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full animate-in zoom-in-95 duration-200">
+                <CreateKey 
+                    on:close={() => creatingKey = false}
+                    on:create={async (e) => {
+                        console.log("Creating key:", e.detail);
+                        const token = await auth.currentUser?.getIdToken(true) || '';
+                        await createKey(e.detail.name, token);
+                        creatingKey = false;
+                        getConsoleData();
+                    }}
+                />
+            </div>
+        </div>
+    {/if}
 </div>
