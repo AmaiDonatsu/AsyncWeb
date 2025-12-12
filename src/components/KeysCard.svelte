@@ -1,5 +1,7 @@
-<script>
-    export let keyData;
+<script lang="ts">
+    import type { TypeKeyData } from '$lib/interfaces';
+    
+    export let keyData: TypeKeyData;
     export let selected = false;
 </script>
 

@@ -10,6 +10,7 @@
     import KeyPanel from '../../components/KeyPanel.svelte';
     import { updateKey, createKey } from '$lib/apiBackend';
     import CreateKey from '../../components/CreateKey.svelte';
+    import type { UserKeysResponse } from '$lib/interfaces';
 
     $effect(() => {
         if (browser && $user === null) {
@@ -18,14 +19,6 @@
             getConsoleData();
         }
     });
-
-    interface KeyData {
-        id: string;
-        [key: string]: any;
-    }
-    interface UserKeysResponse {
-        keys: KeyData[];
-    }
 
     let selectedKey = $state<string | null>(null);
     let userKeys = $state<UserKeysResponse>();
@@ -145,7 +138,7 @@
                     </div>
                     <div class="p-6">
                         {#each userKeys.keys as key (key.id)}
-                            {#if key.id === selectedKey}
+                            {#if key && key.id === selectedKey}
                                 <KeyPanel keyData={key} on:update={async (e) => {
                                     console.log("Updated key data:", e.detail);
                                     const token = await auth.currentUser?.getIdToken(true) || '';

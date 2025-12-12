@@ -67,23 +67,23 @@
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 drop-shadow-md text-[#4A3B69]">¿Qué puedes lograr?</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Feature Item -->
-                <div class="p-6 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm hover:bg-white/10 transition">
-                    <strong class="block text-xl text-[#4FD1B3] mb-2">Testing Contextual</strong>
+                <div class="p-6 bg-white/5 border border-white/50 rounded-xl backdrop-blur-sm hover:bg-gradient-to-r from-[#FF9F45] to-[#FF6F45] transition">
+                    <strong class="block text-xl text-[#FFFFFF] mb-2">Testing Contextual</strong>
                     <p class="text-blue-50">Automatiza pruebas considerando no solo la aplicación, sino también el entorno completo del dispositivo.</p>
                 </div>
                 <!-- Feature Item -->
-                <div class="p-6 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm hover:bg-white/10 transition">
-                    <strong class="block text-xl text-[#4FD1B3] mb-2">Automatización Masiva</strong>
+                <div class="p-6 bg-white/5 border border-white/50 rounded-xl backdrop-blur-sm hover:bg-gradient-to-r from-[#FF9F45] to-[#FF6F45] transition">
+                    <strong class="block text-xl text-[#FFFFFF] mb-2">Automatización Masiva</strong>
                     <p class="text-blue-50">Ejecuta tareas complejas y de larga duración en múltiples dispositivos simultáneamente.</p>
                 </div>
                 <!-- Feature Item -->
-                <div class="p-6 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm hover:bg-white/10 transition">
-                    <strong class="block text-xl text-[#4FD1B3] mb-2">Asistencia Inteligente</strong>
+                <div class="p-6 bg-white/5 border border-white/50 rounded-xl backdrop-blur-sm hover:bg-gradient-to-r from-[#FF9F45] to-[#FF6F45] transition">
+                    <strong class="block text-xl text-[#FFFFFF] mb-2">Asistencia Inteligente</strong>
                     <p class="text-blue-50">Resuelve problemas rápidamente con nuestro chatbot, capaz de analizar causas raíz desde el código de UI.</p>
                 </div>
                 <!-- Feature Item -->
-                <div class="p-6 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm hover:bg-white/10 transition">
-                    <strong class="block text-xl text-[#4FD1B3] mb-2">Sinergia IoT + IA</strong>
+                <div class="p-6 bg-white/5 border border-white/50 rounded-xl backdrop-blur-sm hover:bg-gradient-to-r from-[#FF9F45] to-[#FF6F45] transition">
+                    <strong class="block text-xl text-[#FFFFFF] mb-2">Sinergia IoT + IA</strong>
                     <p class="text-blue-50">Aprovecha al máximo la tecnología IoT integrada con inteligencia artificial.</p>
                 </div>
             </div>

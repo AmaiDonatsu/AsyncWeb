@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
     import { createEventDispatcher } from 'svelte';
+    import type { TypeKeyData } from '$lib/interfaces';
     const dispatchEvent = createEventDispatcher();
-    export let keyData = {
+    
+    export let keyData: TypeKeyData = {
         id: '',
         name: '',
         device: '',
