@@ -1,3 +1,42 @@
+<script lang="ts">
+    import peticionPermiso from '$lib/assets/imgs/peticion-permiso.png';
+    import activarPermiso from '$lib/assets/imgs/activar-permiso.png';
+    import listaVacia from '$lib/assets/imgs/lista-vacia.png';
+    import listaLlaves from '$lib/assets/imgs/lista-llaves.png';
+    import llaveSeleccionada from '$lib/assets/imgs/llave-seleccionada.png';
+    import trasmitiendo from '$lib/assets/imgs/trasmitiendo.png';
+    import deskLista from '$lib/assets/imgs/desklista.png';
+    import deskConnectado from '$lib/assets/imgs/desk-connectado.png';
+    import asyncNerd from '$lib/assets/imgs/asyncnerd.png';
+
+    let stylesTip = $state({
+        background: "bg-purple-100",
+        textColor: "text-black",
+        wheigth: "font-normal"
+    });
+
+    function mouseHoverNerd (mouseEvent: string = '') {
+        if (mouseEvent === 'enter') {
+            stylesTip = {
+                background: "bg-purple-400",
+                textColor: "text-white",
+                wheigth: "font-bold"
+                //transform: "scale(1.05) rotate(5deg)",
+                //transition: "transform 0.3s ease"
+            };
+        } else {
+            stylesTip = {
+                background: "bg-purple-100",
+                textColor: "text-black",
+                wheigth: "font-normal"
+
+                //transform: "scale(1) rotate(0deg)",
+                //transition: "transform 0.3s ease"
+            };
+        }
+    };
+</script>
+
 <article class="docs">
     <header class="hero">
         <h1>Configurar AsyncControl</h1>
@@ -60,11 +99,91 @@
         </ul>
     </section>
 
+    <section class="card">
+        <h2>Configurar dispositivo con App y Servidor</h2>
+
+        <div class="step">
+            <h3>1. Permisos de Accesibilidad</h3>
+            <p>
+                Al iniciar la aplicación móvil, se solicitarán permisos de accesibilidad. Esto es necesario para que la aplicación pueda interactuar con el dispositivo.
+            </p>
+            <div class="gallery">
+                <figure>
+                    <img src={peticionPermiso} alt="Petición de permiso" />
+                    <figcaption>Solicitud de permiso</figcaption>
+                </figure>
+                <figure>
+                    <img src={activarPermiso} alt="Activar permiso" />
+                    <figcaption>Activación en ajustes</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>2. Lista de Llaves</h3>
+            <p>
+                Inicialmente, la lista de llaves estará vacía.
+            </p>
+            <figure>
+                <img src={listaVacia} alt="Lista vacía" />
+                <figcaption>Lista de llaves vacía</figcaption>
+            </figure>
+            <p>
+                Después de crear nuevas llaves en la sección <strong>Consola</strong> de esta página, al refrescar la lista en la aplicación móvil, deberían aparecer las llaves creadas.
+            </p>
+            <figure>
+                <img src={listaLlaves} alt="Lista de llaves" />
+                <figcaption>Llaves sincronizadas</figcaption>
+            </figure>
+        </div>
+
+        <div class="step">
+            <h3>3. Seleccionar Llave y Transmitir</h3>
+            <p>
+                Selecciona una llave dentro de la app móvil. Al hacerlo, la llave se asociará al dispositivo (por ejemplo, 'sdk_gphone_64_x86_64').
+            </p>
+            <figure>
+                <img src={llaveSeleccionada} alt="Llave seleccionada" />
+                <figcaption>Llave con dispositivo asignado</figcaption>
+            </figure>
+            <p>
+                Una vez seleccionada, pulsa en <strong>Transmitir</strong>. El estado cambiará indicando que se está transmitiendo.
+            </p>
+            <figure>
+                <img src={trasmitiendo} alt="Transmitiendo" />
+                <figcaption>Estado transmitiendo</figcaption>
+            </figure>
+        </div>
+
+        <div class="step">
+            <h3>4. Verificación en Escritorio</h3>
+            <p>
+                En la aplicación de escritorio, verás la lista de llaves asociadas a dispositivos activos. Nota que solo aparecen las llaves que tienen un dispositivo asignado.
+            </p>
+            <figure>
+                <img src={deskLista} alt="Lista en escritorio" />
+                <figcaption>Llave visible en escritorio</figcaption>
+            </figure>
+            <p>
+                Finalmente, podrás ver la conexión establecida entre la aplicación móvil y el servidor de escritorio.
+            </p>
+            <figure>
+                <img src={deskConnectado} alt="Conectado en escritorio" />
+                <figcaption>Conexión establecida</figcaption>
+            </figure>
+        </div>
+
+        
+    </section>
+
     <footer class="foot">
-        <p class="tip">
+        <p class="tip {stylesTip.background} {stylesTip.textColor} {stylesTip.wheigth} p-4 rounded-md">
             Consejo: guarda los repos en carpetas dedicadas y usa ramas para separar
             desarrollo de producción.
         </p>
+        <div class="nerd-zone">
+            <img src={asyncNerd} alt="Async Nerd"  on:mouseenter={() => mouseHoverNerd('enter')} on:mouseleave={() => mouseHoverNerd('leave')} />
+        </div>
     </footer>
 </article>
 
@@ -207,7 +326,7 @@
     .tip {
         margin: 0;
         font-size: 0.9rem;
-        color: var(--muted);
+        
         padding-left: 0.75rem;
         border-left: 3px solid var(--detail-deep);
     }
@@ -222,5 +341,64 @@
             width: 100%;
             justify-content: center;
         }
+    }
+
+    .step {
+        margin-top: 2rem;
+        border-top: 1px solid var(--detail-low);
+        padding-top: 1rem;
+    }
+
+    .step h3 {
+        margin-bottom: 1rem;
+        color: var(--highlight-strong);
+    }
+
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    figure {
+        margin: 1rem 0;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 0.5rem;
+        border-radius: 8px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        max-height: 400px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    figcaption {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+        font-style: italic;
+    }
+
+    .nerd-zone {
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+        opacity: 0.85;
+    }
+
+    .nerd-zone img {
+        max-width: 180px;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        transition: transform 0.3s ease;
+    }
+
+    .nerd-zone img:hover {
+        transform: scale(1.05) rotate(5deg);
     }
 </style>
