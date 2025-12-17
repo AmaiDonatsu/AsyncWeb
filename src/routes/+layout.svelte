@@ -4,9 +4,12 @@
 	import logo from '$lib/assets/logoasyc.webp';
     import fondo from '$lib/assets/fondo.png';
 	import { onMount } from 'svelte';
+    import { slide } from 'svelte/transition';
 	import { onAuthStateChanged } from 'firebase/auth';
 	import { user } from '$lib/stores';
 	import { auth } from '$lib/firebase';
+
+    let isMenuOpen = $state(false);
 
 	onMount(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -37,7 +40,7 @@
                     },
                     colors: {
                         aero: {
-                            bg: '#121e31',       // Azul oscuro profundo
+                            bg: '#121e31',
                             glass: 'rgba(255, 255, 255, 0.25)',
                             border: 'rgba(255, 255, 255, 0.4)',
                             green: '#5BD835',
@@ -90,7 +93,7 @@
     </div>
 
     <nav class="absolute top-0 left-0 right-0 z-50 w-full max-w-6xl mt-6 px-6 mx-auto">
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-4 flex justify-between items-center shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-4 flex justify-between items-center shadow-[0_8px_32px_rgba(0,0,0,0.2)] relative z-50">
             <div class="flex items-center gap-2">
                 <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
                     <img src={logo} alt="AsyncControl Logo" class="h-8 w-auto rounded-lg shadow-sm" />
@@ -115,14 +118,58 @@
                 </li>
             </ul>
 
-            <div class="flex items-center">
+            <div class="flex items-center gap-4">
                 {#if $user}
                     <a href="/user" class="px-4 py-1.5 rounded-full border border-white/30 bg-white/10 hover:bg-white/20 transition text-sm font-semibold backdrop-blur-sm text-white">Mi perfil</a>
                 {:else}
                     <a href="/auth" class="px-4 py-1.5 rounded-full border border-white/30 bg-white/10 hover:bg-white/20 transition text-sm font-semibold backdrop-blur-sm text-white">Login</a>
                 {/if}
+
+                <!-- Mobile Menu Button -->
+                <button 
+                    class="md:hidden text-white hover:text-aero-cyan transition-colors focus:outline-none"
+                    onclick={() => isMenuOpen = !isMenuOpen}
+                    aria-label="Toggle Menu"
+                >
+                    {#if isMenuOpen}
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    {:else}
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    {/if}
+                </button>
             </div>
         </div>
+
+        <!-- Mobile Menu Dropdown -->
+        {#if isMenuOpen}
+            <div transition:slide={{ duration: 300, axis: 'y' }} class="absolute top-full left-0 right-0 mt-2 mx-6 p-4 rounded-2xl bg-[#121e31]/95 backdrop-blur-xl border border-white/20 shadow-2xl md:hidden flex flex-col gap-2 z-40 overflow-hidden">
+                <a href="/" onclick={() => isMenuOpen = false} class="text-white/90 hover:text-aero-cyan font-medium p-3 rounded-xl hover:bg-white/5 transition-all flex items-center gap-3">
+                    <span>🏠</span> Home
+                </a>
+                <a href="https://async-control.vercel.app/" target="_blank" onclick={() => isMenuOpen = false} class="text-white/90 hover:text-aero-cyan font-medium p-3 rounded-xl hover:bg-white/5 transition-all flex items-center gap-3">
+                    <span>🚀</span> AsyncControl
+                </a>
+                <a href="/docs" onclick={() => isMenuOpen = false} class="text-white/90 hover:text-aero-cyan font-medium p-3 rounded-xl hover:bg-white/5 transition-all flex items-center gap-3">
+                    <span>📚</span> Docs
+                </a>
+                <a href="/about" onclick={() => isMenuOpen = false} class="text-white/90 hover:text-aero-cyan font-medium p-3 rounded-xl hover:bg-white/5 transition-all flex items-center gap-3">
+                    <span>ℹ️</span> About
+                </a>
+                <a href="/console" onclick={() => isMenuOpen = false} class="text-white/90 hover:text-aero-cyan font-medium p-3 rounded-xl hover:bg-white/5 transition-all flex items-center gap-3">
+                    <span>💻</span> Console
+                </a>
+                <a href="https://github.com/AmaiDonatsu/AsyncWeb" target="_blank" onclick={() => isMenuOpen = false} class="text-white/90 hover:text-aero-cyan font-medium p-3 rounded-xl hover:bg-white/5 transition-all flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 .5a12 12 0 0 0-3.79 23.41c.6.11.82-.26.82-.58l-.01-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.77-1.62-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.25-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.02-.33 3.35 1.23a11.55 11.55 0 0 1 6.1 0c2.33-1.56 3.35-1.23 3.35-1.23.66 1.65.25 2.87.12 3.17.78.84 1.25 1.91 1.25 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22l-.01 3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z" clip-rule="evenodd" />
+                    </svg>
+                    Repo
+                </a>
+            </div>
+        {/if}
     </nav>
 
     <div class="relative z-10 pt-20 pb-20 min-h-screen flex flex-col">
