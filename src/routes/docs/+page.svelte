@@ -47,60 +47,18 @@
         </p>
     </header>
 
-    <section class="card">
-        <h2>Instalar la aplicación móvil</h2>
-        <p>
-            Usa la app libre y de código abierto
-            <strong>TypusControlMini</strong>
-            <span class="badge">en desarrollo</span>.
-        </p>
-
-        <div class="actions">
-            <a
-                class="button"
-                href="https://github.com/AmaiDonatsu/TypusControlMini.git"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Repositorio de TypusControlMini en GitHub</a
-            >
-        </div>
-
-        <ul class="notes">
-            <li>
-                La app aún no está en Play Store. Instálala manualmente desde el
-                repositorio.
-            </li>
-            <li>Proyecto creado con Android Studio.</li>
-        </ul>
-    </section>
-
-    <section class="card">
-        <h2>Configurar el servidor</h2>
-        <p>
-            El backend se ejecuta con <strong>AsyncServerSeq</strong>.
-        </p>
-
-        <div class="actions">
-            <a
-                class="button"
-                href="https://github.com/AmaiDonatsu/AsyncServerSeq.git"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Repositorio de AsyncServerSeq en GitHub</a
-            >
-        </div>
-
-        <ul class="notes">
-            <li>Proyecto pensado para trabajar con Visual Studio Code.</li>
-            <li>
-                Sigue el <code>README</code> del repositorio para configurar el servidor
-                correctamente.
-            </li>
-        </ul>
-    </section>
+    
 
     <section class="card">
         <h2>Configurar dispositivo con App y Servidor</h2>
+
+        <div class="steps">
+            <h3>0. crear llaves</h3>
+            <p>
+                ir a la sección <a href="/console" target="_blank"><strong>Consola</strong></a> de esta página y crear algunas
+                llaves antes de continuar.
+            </p>
+        </div>
 
         <div class="step">
             <h3>1. Permisos de Accesibilidad</h3>
@@ -174,6 +132,60 @@
         </div>
 
         
+    </section>
+
+    <h2>Para instalar y ejecutar desde el código fuente</h2>
+
+    <section class="card">
+        <h2>Instalar la aplicación móvil</h2>
+        <p>
+            Usa la app libre y de código abierto
+            <strong>TypusControlMini</strong>
+            <span class="badge">en desarrollo</span>.
+        </p>
+
+        <div class="actions">
+            <a
+                class="button"
+                href="https://github.com/AmaiDonatsu/TypusControlMini.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Repositorio de TypusControlMini en GitHub</a
+            >
+        </div>
+
+        <ul class="notes">
+            <li>
+                La app aún no está en Play Store. Instálala manualmente desde el
+                repositorio.
+            </li>
+            <li>Proyecto creado con Android Studio.</li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <h2>Configurar el servidor</h2>
+        <p>
+            El backend se ejecuta con <strong>AsyncServerSeq</strong>.
+        </p>
+
+        <div class="actions">
+            <a
+                class="button"
+                href="https://github.com/AmaiDonatsu/AsyncServerSeq.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Repositorio de AsyncServerSeq en GitHub</a
+            >
+        </div>
+
+        <ul class="notes">
+            <li>Proyecto pensado para trabajar con Visual Studio Code.</li>
+            <li>
+                Sigue el <code>README</code> del repositorio para configurar el servidor
+                correctamente.
+            </li>
+        </ul>
     </section>
 
     <footer class="foot">

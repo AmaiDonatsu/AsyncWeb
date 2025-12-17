@@ -1,5 +1,6 @@
 <script>
     import Mascota from '$lib/assets/imgs/ayncMasc.webp'
+    import Sorprendida from '$lib/assets/imgs/sorprendida.png'
 </script>
 
 <div class="about-container">
@@ -155,6 +156,10 @@
                 esperanza —y la capacidad— de crear agentes que interactúen con el mundo físico de forma nativa, eliminando 
                 la necesidad de una ingeniería de prompts excesivamente compleja.
             </p>
+        </div>
+        <div class="mascot-container" style="margin-top: 2rem; justify-content: end;">
+            <img src={Sorprendida} alt="Mascota Sorprendida" class="mascot-image" style="max-width: 250px;" />
+
         </div>
     </section>
 </div>
@@ -445,10 +450,14 @@
         border-left: 4px solid #764ba2;
     }
 
+    .story-section h2 {
+        color: #d4b0f7;
+    }
+
     .story-content p {
         margin-bottom: 1.5rem;
         text-align: justify;
-        color: #555;
+        color: #fff7f7;
         font-size: 1.05rem;
     }
 

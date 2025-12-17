@@ -1,99 +1,119 @@
-<div class="min-h-screen bg-gradient-to-br from-[#4A3B69] via-[#4FD1B3] to-[#5BD835] flex flex-col items-center text-white relative overflow-hidden">
-    
-    <!-- Background Elements -->
-    <div class="absolute top-20 left-20 w-72 h-72 bg-white/20 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
-    <div class="absolute bottom-20 right-20 w-96 h-96 bg-[#F2F4F7]/40 rounded-full blur-3xl pointer-events-none"></div>
+<script>
+</script>
 
-    <!-- Main Content -->
-    <main class="relative z-10 w-full max-w-6xl px-6 py-12 flex flex-col items-center">
-        
-        <!-- Hero Section -->
-        <div class="text-center max-w-4xl mb-16 ">
-            <h1 class="text-6xl md:text-8xl font-black tracking-tight drop-shadow-lg mb-4">
-                Async<span class="text-[#5BD835] rounded-md mg-md">Control</span>
-            </h1>
+<svelte:head>
+    <title>AsyncControl - IoT Command Center</title>
+</svelte:head>
+
+<!-- UI PRINCIPAL -->
+<div class="flex flex-col items-center min-h-screen">
+    
+    <!-- HERO SECTION -->
+    <main class="flex-grow flex flex-col items-center justify-center w-full max-w-5xl px-6 pt-20 pb-20 text-center">
             
-            <p class="text-xl md:text-2xl font-light mb-8 text-[#F2F4F7] drop-shadow-md">
-                Tu centro de comando IoT. Transparente. Rápido. Seguro.
+            <!-- Badge "New v2.0" -->
+            <div class="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/20 backdrop-blur-sm text-xs font-medium text-aero-cyan uppercase tracking-widest shadow-lg animate-float">
+                <span class="w-2 h-2 rounded-full bg-aero-green animate-pulse"></span>
+                AsyncMini AI Activado
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight leading-tight drop-shadow-xl">
+                <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/70">Tu Centro de Comando</span>
+                <br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-aero-green via-aero-cyan to-white drop-shadow-[0_0_25px_rgba(79,209,179,0.5)]">
+                    IoT & Testing
+                </span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-blue-100/90 max-w-2xl mb-10 leading-relaxed drop-shadow-md font-light">
+                Olvídate de la latencia. <strong class="text-white font-semibold">AsyncControl</strong> combina automatización P2P con inteligencia artificial para un flujo de trabajo transparente, rápido y seguro.
             </p>
 
-            <!-- Intro Text -->
-            <div class="max-w-2xl mx-auto mb-10 text-lg md:text-xl leading-relaxed text-blue-50/90">
-                <p>
-                    <strong>AsyncControl</strong> es una plataforma avanzada diseñada para
-                    <strong>QA testing</strong>, monitoreo y automatización. Gracias a su
-                    sistema multi-agente de IA, <strong>AsyncMini</strong>, llevamos la
-                    automatización al siguiente nivel.
-                </p>
-            </div>
-
-            <!-- CTA Buttons -->
-            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-                <a href="/download" 
-                class="group relative px-8 py-4 bg-[linear-gradient(135deg,#FF9F45,#9ACD32)] border border-white/40 rounded-full backdrop-blur-md shadow-[0_12px_26px_rgba(0,0,0,0.35)] hover:scale-105 transition-all duration-300 overflow-hidden">
-                    <div class="absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(to_bottom,rgba(255,159,69,0.9),rgba(255,159,69,0.3))] opacity-80"></div>
-                    <span class="relative font-bold text-lg tracking-wide text-white group-hover:opacity-90">DESCARGAR AHORA</span>
+            <!-- BOTONES DE ACCIÓN (Estilo Gel/Glossy) -->
+            <div class="flex flex-col sm:flex-row gap-5 w-full justify-center items-center">
+                <!-- Botón Principal "Gel" -->
+                <a href="https://async-control.vercel.app/" target="_blank" class="group relative w-full sm:w-auto overflow-hidden rounded-full transition-transform hover:scale-105 duration-300 shadow-[0_10px_40px_-10px_rgba(91,216,53,0.5)]">
+                    <!-- Fondo base -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#70e64c] to-[#3aa11a]"></div>
+                    <!-- Brillo superior (Gloss) -->
+                    <div class="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-white/60 to-transparent opacity-90"></div>
+                    <!-- Contenido -->
+                    <div class="relative px-8 py-4 flex items-center justify-center gap-3">
+                        <span class="font-bold text-lg text-white drop-shadow-md tracking-wide">AsyncControl</span>
+                        <svg class="w-5 h-5 text-white drop-shadow-md group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
                 </a>
 
-                <a href="/docs" 
-                class="px-8 py-4 rounded-full border border-[#4FD1B3]/70 text-[#ffffff] hover:bg-[#4FD1B3]/10 transition-all font-semibold text-lg backdrop-blur-sm">
-                    Leer Documentación
+                <!-- Botón Secundario "Cristal" -->
+                <a href="/docs" class="group relative w-full sm:w-auto px-8 py-4 rounded-full border border-white/40 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                    <span class="font-semibold text-white tracking-wide">Ver Documentación</span>
                 </a>
             </div>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-20">
-            <div class="p-6 bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md hover:bg-white/20 transition cursor-default">
-                <div class="text-4xl mb-4">⚡</div>
-                <h3 class="font-bold text-xl mb-2 text-[#9ACD32]">Tiempo Real</h3>
-                <p class="text-blue-100 text-sm">Controla tus dispositivos sin latencia perceptible.</p>
+            <!-- FEATURES CARDS (Glassmorphism + Grid) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mt-24">
+                
+                <!-- Card 1 -->
+                <div class="glass-card relative p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border-t border-l border-white/20 border-b border-r border-white/5 backdrop-blur-xl transition-all duration-300 group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-aero-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
+                    <div class="w-12 h-12 mb-4 bg-gradient-to-br from-white/20 to-transparent rounded-xl flex items-center justify-center border border-white/20 shadow-inner">
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-aero-cyan transition-colors">Tiempo Real</h3>
+                    <p class="text-blue-100/70 text-sm leading-relaxed">Arquitectura optimizada para cero latencia perceptible en redes locales.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card relative p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border-t border-l border-white/20 border-b border-r border-white/5 backdrop-blur-xl transition-all duration-300 group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-aero-green/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
+                    <div class="w-12 h-12 mb-4 bg-gradient-to-br from-white/20 to-transparent rounded-xl flex items-center justify-center border border-white/20 shadow-inner">
+                        <span class="text-2xl">🛡️</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-aero-green transition-colors">Seguridad P2P</h3>
+                    <p class="text-blue-100/70 text-sm leading-relaxed">Encriptación de extremo a extremo. Tus llaves privadas nunca salen de tu control.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card relative p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border-t border-l border-white/20 border-b border-r border-white/5 backdrop-blur-xl transition-all duration-300 group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-aero-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
+                    <div class="w-12 h-12 mb-4 bg-gradient-to-br from-white/20 to-transparent rounded-xl flex items-center justify-center border border-white/20 shadow-inner">
+                        <span class="text-2xl">📱</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-aero-orange transition-colors">Multi-Device</h3>
+                    <p class="text-blue-100/70 text-sm leading-relaxed">Control unificado desde el navegador, escritorio o tu dispositivo Android.</p>
+                </div>
+
             </div>
 
-            <div class="p-6 bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md hover:bg-white/20 transition cursor-default">
-                <div class="text-4xl mb-4">🔐</div>
-                <h3 class="font-bold text-xl mb-2 text-[#9ACD32]">Seguridad P2P</h3>
-                <p class="text-blue-100 text-sm">Tus keys privadas nunca tocan nuestros servidores.</p>
-            </div>
+            <!-- SECCIÓN "BENTO" DE CARACTERÍSTICAS -->
+            <div class="w-full mt-24">
+                <h2 class="text-3xl font-bold mb-10 text-center drop-shadow-lg">Potencia sin límites</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 h-auto md:h-64">
+                    <!-- Feature Grande -->
+                    <div class="col-span-1 md:col-span-2 row-span-1 glass-card p-8 rounded-3xl bg-white/5 border border-white/10 flex flex-col justify-center text-left relative overflow-hidden group">
+                        <div class="absolute right-0 bottom-0 w-32 h-32 bg-aero-orange/30 blur-[60px] group-hover:bg-aero-orange/50 transition-all"></div>
+                        <h4 class="text-2xl font-bold text-white mb-2 z-10">AsyncMini AI</h4>
+                        <p class="text-blue-100/80 z-10 max-w-sm">Nuestro sistema multi-agente analiza logs en tiempo real y sugiere fixes automáticos.</p>
+                    </div>
 
-            <div class="p-6 bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md hover:bg-white/20 transition cursor-default">
-                <div class="text-4xl mb-4">📱</div>
-                <h3 class="font-bold text-xl mb-2 text-[#9ACD32]">Multi-Plataforma</h3>
-                <p class="text-blue-100 text-sm">Desde el navegador hasta tu móvil Android.</p>
-            </div>
-        </div>
+                    <!-- Feature Pequeño -->
+                    <div class="col-span-1 glass-card p-6 rounded-3xl bg-white/5 border border-white/10 flex flex-col justify-end relative overflow-hidden text-left hover:-translate-y-1 transition-transform">
+                        <div class="absolute top-4 right-4 text-3xl opacity-50">🎮</div>
+                        <h4 class="font-bold text-white text-lg">Testing Contextual</h4>
+                        <p class="text-xs text-blue-200 mt-1">Simula entornos reales.</p>
+                    </div>
 
-        <!-- Detailed Features Section -->
-        <section class="w-full max-w-5xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 drop-shadow-md text-[#4A3B69]">¿Qué puedes lograr?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Feature Item -->
-                <div class="p-6 bg-white/5 border border-white/50 rounded-xl backdrop-blur-sm hover:bg-gradient-to-r from-[#FF9F45] to-[#FF6F45] transition">
-                    <strong class="block text-xl text-[#FFFFFF] mb-2">Testing Contextual</strong>
-                    <p class="text-blue-50">Automatiza pruebas considerando no solo la aplicación, sino también el entorno completo del dispositivo.</p>
-                </div>
-                <!-- Feature Item -->
-                <div class="p-6 bg-white/5 border border-white/50 rounded-xl backdrop-blur-sm hover:bg-gradient-to-r from-[#FF9F45] to-[#FF6F45] transition">
-                    <strong class="block text-xl text-[#FFFFFF] mb-2">Automatización Masiva</strong>
-                    <p class="text-blue-50">Ejecuta tareas complejas y de larga duración en múltiples dispositivos simultáneamente.</p>
-                </div>
-                <!-- Feature Item -->
-                <div class="p-6 bg-white/5 border border-white/50 rounded-xl backdrop-blur-sm hover:bg-gradient-to-r from-[#FF9F45] to-[#FF6F45] transition">
-                    <strong class="block text-xl text-[#FFFFFF] mb-2">Asistencia Inteligente</strong>
-                    <p class="text-blue-50">Resuelve problemas rápidamente con nuestro chatbot, capaz de analizar causas raíz desde el código de UI.</p>
-                </div>
-                <!-- Feature Item -->
-                <div class="p-6 bg-white/5 border border-white/50 rounded-xl backdrop-blur-sm hover:bg-gradient-to-r from-[#FF9F45] to-[#FF6F45] transition">
-                    <strong class="block text-xl text-[#FFFFFF] mb-2">Sinergia IoT + IA</strong>
-                    <p class="text-blue-50">Aprovecha al máximo la tecnología IoT integrada con inteligencia artificial.</p>
+                    <!-- Feature Pequeño -->
+                    <div class="col-span-1 glass-card p-6 rounded-3xl bg-white/5 border border-white/10 flex flex-col justify-end relative overflow-hidden text-left hover:-translate-y-1 transition-transform">
+                        <div class="absolute top-4 right-4 text-3xl opacity-50">🔄</div>
+                        <h4 class="font-bold text-white text-lg">Auto-Scaling</h4>
+                        <p class="text-xs text-blue-200 mt-1">Crece con tu infraestructura.</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-    </main>
-
-    <footer class="relative z-10 py-8 text-center text-blue-200/60 text-sm">
-        <p>
-            Visita <a href="https://svelte.dev/docs/kit" class="hover:text-white underline decoration-[#4FD1B3]/70 underline-offset-4 transition">svelte.dev/docs/kit</a> para leer la documentación.
-        </p>
-    </footer>
+        </main>
 </div>
