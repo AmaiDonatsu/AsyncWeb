@@ -27,6 +27,11 @@
     async function getConsoleData() {
         console.log("fetching user keys...");
         try {
+            if (!auth.currentUser) {
+                console.warn("Usuario no autenticado, esperando...");
+                return; 
+            }
+            
             const token = await auth.currentUser?.getIdToken(true);
             const keys = await fetch(`${PUBLIC_FIREBASE_BACKEND_URL}/keys/list`, {
                 method: 'GET',
