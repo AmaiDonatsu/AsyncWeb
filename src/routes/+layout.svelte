@@ -8,6 +8,7 @@
 	import { onAuthStateChanged } from 'firebase/auth';
 	import { user } from '$lib/stores';
 	import { auth } from '$lib/firebase';
+    import { injectAnalytics } from '@vercel/analytics/sveltekit'
 
     let isMenuOpen = $state(false);
 
