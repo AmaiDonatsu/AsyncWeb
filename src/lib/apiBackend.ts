@@ -1,8 +1,8 @@
 import { PUBLIC_FIREBASE_BACKEND_URL } from '$env/static/public';
 
 async function updateKey(keyId: string, name: string, reserved: boolean, token: string) {
-    const backendUrl = PUBLIC_FIREBASE_BACKEND_URL || 'http://localhost:8000';    
-    
+    const backendUrl = PUBLIC_FIREBASE_BACKEND_URL || 'http://localhost:8000';
+
     const response = await fetch(`${backendUrl}/keys/update_user_key/${keyId}`, {
         method: 'PUT',
         headers: {
@@ -24,8 +24,8 @@ async function updateKey(keyId: string, name: string, reserved: boolean, token: 
 //        }
 
 async function createKey(name: string, token: string) {
-    const backendUrl = PUBLIC_FIREBASE_BACKEND_URL || 'http://localhost:8000';    
-    
+    const backendUrl = PUBLIC_FIREBASE_BACKEND_URL || 'http://localhost:8000';
+
     const response = await fetch(`${backendUrl}/keys/create`, {
         method: 'POST',
         headers: {
@@ -40,4 +40,18 @@ async function createKey(name: string, token: string) {
 
 // example response: { "success": True, "message": "Key creada exitosamente", "key_id": key_id, "data": {"device": "", "name": key_data.name,"reserved": False,"secretKey": secret_key,"user": user_id }}
 
-export { updateKey, createKey };
+async function getUserKeys(token: string) {
+    const backendUrl = PUBLIC_FIREBASE_BACKEND_URL || 'http://localhost:8000';
+
+    const response = await fetch(`${backendUrl}/keys/list`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'ngrok-skip-browser-warning': 'true'
+        }
+    });
+
+    return response;
+}
+
+export { updateKey, createKey, getUserKeys };
