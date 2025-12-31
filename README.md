@@ -1,38 +1,71 @@
-# sv
+# AsyncControl
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+> **Tu Centro de Comando IoT & Testing.**  
+> Automatización P2P, Inteligencia Artificial y cero latencia.
 
-## Creating a project
+**AsyncControl** es una plataforma de vanguardia diseñada para la gestión, control y testeo de dispositivos IoT en tiempo real. Combina una arquitectura optimizada para baja latencia con **AsyncMini AI**, un sistema multi-agente que analiza logs y sugiere correcciones automáticas, ofreciendo un flujo de trabajo transparente, rápido y seguro.
 
-If you're seeing this, you've probably already done this step. Congrats!
+![AsyncControl Badge](https://img.shields.io/badge/Status-Active-success)
+![Svelte](https://img.shields.io/badge/Built%20with-Svelte%205-orange)
 
-```sh
-# create a new project in the current directory
-npx sv create
+## 🚀 Características Principales
 
-# create a new project in my-app
-npx sv create my-app
-```
+*   **⚡ Tiempo Real**: Arquitectura optimizada para cero latencia perceptible en redes locales.
+*   **🛡️ Seguridad P2P**: Encriptación de extremo a extremo. Tus llaves privadas nunca salen de tu control.
+*   **🤖 AsyncMini AI**: Sistema multi-agente integrado que analiza el rendimiento y logs en tiempo real.
+*   **📱 Multi-Device**: Control unificado accesible desde navegador, escritorio o dispositivos móviles.
+*   **🎮 Testing Contextual**: Herramientas para simular entornos reales y pruebas de carga.
+*   **💎 Diseño Premium**: Interfaz moderna con Glassmorphism y micro-interacciones fluidas.
 
-## Developing
+## 🛠️ Stack Tecnológico
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Este proyecto está construido con las últimas tecnologías web para asegurar máximo rendimiento y mantenibilidad:
 
-```sh
-npm run dev
+*   **Framework**: [SvelteKit](https://kit.svelte.dev/) (Svelte 5)
+*   **Estilos**: [TailwindCSS](https://tailwindcss.com/)
+*   **Backend/BaaS**: [Firebase](https://firebase.google.com/)
+*   **Lenguaje**: TypeScript
+*   **Analíticas**: Vercel Analytics
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## 💻 Desarrollo Local
 
-## Building
+Sigue estos pasos para levantar el proyecto en tu entorno local:
 
-To create a production version of your app:
+1.  **Clonar el repositorio**:
+    ```bash
+    git clone https://github.com/AmaiDonatsu/AsyncWeb.git
+    cd AsyncWeb
+    ```
 
-```sh
+2.  **Instalar dependencias**:
+    ```bash
+    npm install
+    # o pnpm install / yarn
+    ```
+
+3.  **Configurar variables de entorno**:
+    Crea un archivo `.env` en la raíz basado en `.env.example` (si existe) y configura tus credenciales.
+
+4.  **Iniciar servidor de desarrollo**:
+    ```bash
+    npm run dev
+    ```
+    El servidor estará disponible en `http://localhost:5173`.
+
+## 📦 Construcción
+
+Para generar una versión de producción:
+
+```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+Puedes previsualizar la build con:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+npm run preview
+```
+
+## 📄 Licencia
+
+Este proyecto es propiedad de **AsyncWeb Team**. Todos los derechos reservados.
